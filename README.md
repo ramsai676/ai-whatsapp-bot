@@ -32,7 +32,11 @@ Open the page and chat in the phone simulator. Try:
 - type **`book`** → walk through the **lead-capture flow** and watch the lead appear in the side panel
 - type **`agent`** → human handoff
 
-> _Add your screenshot/GIF (e.g. `docs/demo.gif`) and deployed URL._
+### Screenshots
+
+| Live WhatsApp simulator | Lead-capture flow + captured leads |
+| :---: | :---: |
+| ![Bot home](docs/01-home.png) | ![Conversation and captured lead](docs/02-result.png) |
 
 ---
 
