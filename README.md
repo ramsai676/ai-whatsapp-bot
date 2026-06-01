@@ -1,102 +1,93 @@
-# 🤖 WhatsApp Business Automation Bot
+# WhatsApp Business Bot
 
-> Auto-replies, FAQ answering, and a guided **lead-capture flow** for WhatsApp - built for the official **Meta WhatsApp Cloud API**, with a **built-in WhatsApp simulator** so it runs and demos with **zero credentials**.
+A WhatsApp automation bot for small businesses. It auto-replies to common questions, answers from a configurable FAQ, runs a guided lead-capture flow, and hands off to a human on request. It is built for the official Meta WhatsApp Cloud API and ships with a built-in simulator so it can be run and demonstrated without any credentials.
 
-A practical automation bot for small businesses: it answers customers instantly, collects qualified leads, hands off to a human on request, and (optionally) uses **Claude** to handle free-form questions.
-
-![status](https://img.shields.io/badge/status-production--ready-2ecc71)
-![node](https://img.shields.io/badge/node-%3E%3D18-25d366)
+![node](https://img.shields.io/badge/node-%3E%3D18-informational)
 ![license](https://img.shields.io/badge/license-MIT-blue)
+![tests](https://img.shields.io/badge/tests-12%20passing-success)
 
----
+## Overview
 
-## ✨ Why this project
+The bot answers customers instantly, collects qualified leads, and escalates to a person when asked. It implements the real Meta Cloud API webhook contract (verification, inbound parsing, and sending through the Graph API), and includes a browser-based simulator that drives the same logic, so reviewers can try it with no Meta account or phone.
 
-This is exactly the WhatsApp automation small businesses pay for - and it's engineered the way a real product would be:
+The conversation logic is a pure, side-effect-free function, which keeps it fully testable. An optional language-model layer can answer free-form questions that the rules do not cover, grounded in the business profile; without it, the bot uses a sensible default reply.
 
-- **Provider-ready, not a toy.** Implements the real Meta **Cloud API** webhook contract (verification + inbound parsing + Graph API sending).
-- **Demoable instantly.** A built-in **WhatsApp-style simulator** drives the *same* bot engine in-browser, so reviewers can try it with no Meta account, no phone, no QR code.
-- **Properly architected & tested.** The conversation engine is a **pure, synchronous, side-effect-free function** - 12 unit tests cover intents, the multi-step lead-capture state machine, cancellation, FAQ matching, and webhook parsing.
-- **Optional AI.** Free-form questions the rules don't catch can be answered by Claude, grounded in the business profile - with a graceful default when no key is set.
+## Screenshots
 
----
-
-## 🖥️ Live demo
-
-```bash
-npm install && npm start      # → http://localhost:3005
-```
-
-Open the page and chat in the phone simulator. Try:
-- *"hi"* → menu · *"what are your hours?"* · *"where are you?"* · *"pricing?"*
-- type **`book`** → walk through the **lead-capture flow** and watch the lead appear in the side panel
-- type **`agent`** → human handoff
-
-### Screenshots
-
-| Live WhatsApp simulator | Lead-capture flow + captured leads |
+| Live simulator | Lead-capture flow |
 | :---: | :---: |
 | ![Bot home](docs/01-home.png) | ![Conversation and captured lead](docs/02-result.png) |
 
----
+## What it does
 
-## 🧠 Architecture
+- Auto-replies for hours, location, services, and pricing
+- FAQ matching for common questions
+- A multi-step lead-capture flow (type "book" to see it)
+- Human handoff (type "agent")
+- Optional free-form answers for questions outside the rules
 
-```
-  ┌────────────────────────┐        ┌────────────────────────┐
-  │  Meta WhatsApp Cloud    │        │  Built-in Simulator UI  │
-  │  API  (/webhook)        │        │  (/api/sim)             │
-  └───────────┬────────────┘        └───────────┬────────────┘
-              │  inbound text                    │  inbound text
-              └───────────────┬──────────────────┘
-                              ▼
-                   ┌──────────────────────┐
-                   │  engine.js (PURE)     │  intent · FAQ · lead-capture FSM
-                   │  processMessage()     │  → { replies, events, needsAi }
-                   └──────────┬───────────┘
-                              │ needsAi?            events: lead_captured
-                              ▼                            ▼
-                     ai.js (Claude, opt.)          leadStore.js → data/leads.json
+## Getting started
+
+```bash
+git clone https://github.com/ramsai676/ai-whatsapp-bot.git
+cd ai-whatsapp-bot
+npm install
+npm start
+# open http://localhost:3005
 ```
 
-The engine never touches the network or disk - transport (`whatsapp.js`), AI (`ai.js`), and persistence (`leadStore.js`) are separate, swappable layers.
+Open the page and chat in the phone simulator. No credentials are required to try it.
 
----
+Run the tests:
 
-## 🔌 Endpoints
+```bash
+npm test
+```
+
+## Endpoints
 
 | Endpoint | Purpose |
 | --- | --- |
-| `GET /webhook` | Meta webhook **verification** (challenge/token). |
-| `POST /webhook` | Receives WhatsApp messages, replies via Graph API. |
-| `POST /api/sim` | Simulator: `{ sessionId, text }` → `{ replies, intent, leadCaptured }`. |
-| `POST /api/sim/reset` | Reset a simulator conversation. |
-| `GET /api/leads` | List captured leads. |
-| `GET /api/health` | `{ status, business, ai, whatsapp }`. |
+| `GET /webhook` | Meta webhook verification |
+| `POST /webhook` | Receives WhatsApp messages and replies through the Graph API |
+| `POST /api/sim` | Simulator: send a message and get the bot's replies |
+| `POST /api/sim/reset` | Reset a simulator conversation |
+| `GET /api/leads` | List captured leads |
+| `GET /api/health` | Service status |
 
----
+## Connecting a real WhatsApp number
 
-## 🚀 Going live on WhatsApp
-
-1. Create a Meta app → add **WhatsApp** → get a **token** and **phone number ID**.
+1. Create a Meta app, add WhatsApp, and obtain a token and phone number ID.
 2. Set `WHATSAPP_TOKEN`, `WHATSAPP_PHONE_ID`, and a `WHATSAPP_VERIFY_TOKEN` in `.env`.
-3. Deploy (Render/Railway/Fly) and set the webhook URL to `https://your-host/webhook` with the same verify token.
-4. (Optional) add `ANTHROPIC_API_KEY` for AI free-form answers.
+3. Deploy, and set the webhook URL to `https://your-host/webhook` with the same verify token.
 
-Customise the bot by editing [`data/business.json`](data/business.json) (hours, location, services, pricing, FAQs).
+Customise the bot by editing `data/business.json` (hours, location, services, pricing, FAQs).
 
----
+## How it works
 
-## 🧪 Tests
-
-```bash
-npm test     # 12 unit tests - engine + webhook parsing, no network
+```
+Cloud API webhook  \
+                    >  conversation engine (engine.js, pure) --> replies + events
+simulator endpoint /         |                                       |
+                             v                                       v
+                   optional free-form answer                 lead store (JSON)
 ```
 
-## ⚖️ Use responsibly
+The engine never touches the network or disk; transport, optional generation, and persistence are separate layers.
 
-Respect WhatsApp's Business Policy and local consent/anti-spam laws. Only message users who have opted in; captured personal data (`data/leads.json`) is git-ignored by default - handle it per applicable privacy rules.
+## Tech stack
 
-## 📜 License
+- Node.js and Express
+- A pure, unit-tested conversation engine (intent detection, FAQ matching, lead-capture state machine)
+- Meta WhatsApp Cloud API adapter (webhook verification, inbound parsing, Graph API send)
+- A browser-based simulator that exercises the same engine
+- Built-in `node:test` for the engine and webhook parsing
+- Optional Anthropic API integration for free-form answers
 
-MIT - see [LICENSE](LICENSE).
+## Responsible use
+
+Follow WhatsApp's Business Policy and local consent and anti-spam laws. Only message users who have opted in. Captured lead data in `data/leads.json` is git-ignored by default; handle it according to applicable privacy rules.
+
+## License
+
+MIT. See [LICENSE](LICENSE).

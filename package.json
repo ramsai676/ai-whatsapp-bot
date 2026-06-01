@@ -9,13 +9,25 @@
     "dev": "node --watch server.js",
     "test": "node --test"
   },
-  "keywords": ["whatsapp", "chatbot", "automation", "lead-capture", "faq-bot", "cloud-api", "ai", "claude", "customer-support"],
-  "author": "",
+  "keywords": [
+    "whatsapp",
+    "chatbot",
+    "automation",
+    "lead-capture",
+    "faq-bot",
+    "cloud-api",
+    "ai",
+    "claude",
+    "customer-support"
+  ],
+  "author": "ramsai676",
   "license": "MIT",
   "dependencies": {
     "@anthropic-ai/sdk": "^0.32.1",
     "dotenv": "^16.4.5",
     "express": "^4.21.2"
   },
-  "engines": { "node": ">=18" }
+  "engines": {
+    "node": ">=18"
+  }
 }
