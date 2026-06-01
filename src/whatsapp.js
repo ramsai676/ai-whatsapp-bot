@@ -1,7 +1,7 @@
 // Meta WhatsApp Cloud API adapter.
 //
 // Handles the two halves of the Cloud API contract:
-//   1. Webhook VERIFICATION (GET) — Meta calls with a challenge token.
+//   1. Webhook VERIFICATION (GET) - Meta calls with a challenge token.
 //   2. Sending a text message back via the Graph API.
 //
 // Parsing of inbound webhook payloads is a pure function (testable). Actually
@@ -27,7 +27,7 @@ export function verifyWebhook(query) {
 }
 
 // Extract incoming text messages from a webhook POST body. Returns
-// [{ from, text, name }] — empty for status/non-text events.
+// [{ from, text, name }] - empty for status/non-text events.
 export function parseInbound(body) {
   const out = [];
   const entries = body?.entry || [];

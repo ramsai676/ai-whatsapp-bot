@@ -5,7 +5,7 @@ import { parseInbound, verifyWebhook } from '../src/whatsapp.js';
 
 const BUSINESS = {
   name: 'Glow Studio',
-  hours: 'Tue–Sun, 10–8',
+  hours: 'Tue-Sun, 10-8',
   location: 'MG Road',
   services: 'haircuts, facials',
   pricing: 'from ₹300',
@@ -34,7 +34,7 @@ test('greeting returns a menu mentioning the business', () => {
 });
 
 test('hours/location/pricing answers include the config values', () => {
-  assert.ok(processMessage(fresh(), 'timings?', BUSINESS).replies[0].includes('Tue–Sun'));
+  assert.ok(processMessage(fresh(), 'timings?', BUSINESS).replies[0].includes('Tue-Sun'));
   assert.ok(processMessage(fresh(), 'address?', BUSINESS).replies[0].includes('MG Road'));
   assert.ok(processMessage(fresh(), 'price list', BUSINESS).replies[0].includes('₹300'));
 });

@@ -131,7 +131,7 @@ export function processMessage(session, text, business) {
     s.stage = 'idle';
     s.lead = {};
     replies.push(
-      `Perfect — thank you! ✅ Our team at *${business.name}* will reach out shortly to confirm "${lead.request}". ` +
+      `Perfect - thank you! ✅ Our team at *${business.name}* will reach out shortly to confirm "${lead.request}". ` +
         `Is there anything else I can help with?`,
     );
     return done(s, replies, events, 'booking');
@@ -157,7 +157,7 @@ export function processMessage(session, text, business) {
       replies.push(`💰 ${business.pricing}`);
       return done(s, replies, events, intent);
     case 'human':
-      replies.push("Sure — I'll connect you with our team. Could I get your name first so they can help you faster?");
+      replies.push("Sure - I'll connect you with our team. Could I get your name first so they can help you faster?");
       s.stage = 'capturing_name';
       return done(s, replies, events, intent);
     case 'booking':
@@ -181,9 +181,9 @@ export function processMessage(session, text, business) {
     return done(s, replies, events, 'faq');
   }
 
-  // Nothing matched — caller MAY replace this with an AI-generated answer.
+  // Nothing matched - caller MAY replace this with an AI-generated answer.
   replies.push(
-    `I'm not totally sure about that one 🤔, but I'd love to help! You can ask about our hours, location, services, or pricing — or type *book* to make an appointment.`,
+    `I'm not totally sure about that one 🤔, but I'd love to help! You can ask about our hours, location, services, or pricing - or type *book* to make an appointment.`,
   );
   return done(s, replies, events, null, true);
 }

@@ -1,7 +1,7 @@
 {
   "name": "ai-whatsapp-bot",
   "version": "1.0.0",
-  "description": "WhatsApp business automation bot for the Meta WhatsApp Cloud API: auto-replies, FAQ answering, and a multi-step lead-capture flow. Includes a built-in WhatsApp simulator so it runs and demos with zero credentials. Optional Claude for free-form questions.",
+  "description": "WhatsApp business automation bot for the Meta WhatsApp Cloud API: auto-replies, FAQ answering, and a multi-step lead-capture flow. Includes a built-in WhatsApp simulator so it runs and demos with zero credentials. Optional Gemini for free-form questions.",
   "type": "module",
   "main": "server.js",
   "scripts": {
@@ -17,13 +17,13 @@
     "faq-bot",
     "cloud-api",
     "ai",
-    "claude",
+    "gemini",
     "customer-support"
   ],
   "author": "ramsai676",
   "license": "MIT",
   "dependencies": {
-    "@anthropic-ai/sdk": "^0.32.1",
+    "@google/genai": "^2.7.0",
     "dotenv": "^16.4.5",
     "express": "^4.21.2"
   },

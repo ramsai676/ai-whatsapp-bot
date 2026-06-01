@@ -100,7 +100,7 @@ app.get('/api/leads', (_req, res) => {
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
   app.listen(PORT, () => {
     console.log(`\n  🤖  WhatsApp Bot (${business.name}) on http://localhost:${PORT}`);
-    console.log(`      AI fallback: ${aiAvailable() ? 'ENABLED (Claude)' : 'off'} · WhatsApp: ${isConfigured() ? 'LIVE' : 'simulator-only'}`);
+    console.log(`      AI fallback: ${aiAvailable() ? 'ENABLED (Gemini)' : 'off'} · WhatsApp: ${isConfigured() ? 'LIVE' : 'simulator-only'}`);
     console.log(`      Try the simulator at http://localhost:${PORT}\n`);
   });
 }

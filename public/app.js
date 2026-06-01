@@ -70,7 +70,7 @@ async function loadLeads() {
     const d = await (await fetch('/api/leads')).json();
     const ul = $('leads');
     $('lead-count').textContent = d.leads.length;
-    if (!d.leads.length) { ul.innerHTML = '<li class="muted">No leads yet — try the booking flow.</li>'; return; }
+    if (!d.leads.length) { ul.innerHTML = '<li class="muted">No leads yet - try the booking flow.</li>'; return; }
     ul.innerHTML = '';
     d.leads.slice(-6).reverse().forEach((l) => {
       const li = document.createElement('li');

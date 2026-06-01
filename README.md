@@ -82,7 +82,7 @@ The engine never touches the network or disk; transport, optional generation, an
 - Meta WhatsApp Cloud API adapter (webhook verification, inbound parsing, Graph API send)
 - A browser-based simulator that exercises the same engine
 - Built-in `node:test` for the engine and webhook parsing
-- Optional Anthropic API integration for free-form answers
+- Optional Gemini API integration for free-form answers
 
 ## Responsible use
 
