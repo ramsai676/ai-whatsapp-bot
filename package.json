@@ -1,0 +1,21 @@
+{
+  "name": "ai-whatsapp-bot",
+  "version": "1.0.0",
+  "description": "WhatsApp business automation bot for the Meta WhatsApp Cloud API: auto-replies, FAQ answering, and a multi-step lead-capture flow. Includes a built-in WhatsApp simulator so it runs and demos with zero credentials. Optional Claude for free-form questions.",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "test": "node --test"
+  },
+  "keywords": ["whatsapp", "chatbot", "automation", "lead-capture", "faq-bot", "cloud-api", "ai", "claude", "customer-support"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.32.1",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.2"
+  },
+  "engines": { "node": ">=18" }
+}

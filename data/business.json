@@ -1,0 +1,13 @@
+{
+  "name": "Glow Beauty Studio",
+  "hours": "Tuesday–Sunday, 10 AM to 8 PM. Closed Mondays.",
+  "location": "Shop 4, Riverside Plaza, MG Road, Coimbatore.",
+  "services": "Haircuts & styling, hair colour, facials, manicure & pedicure, and bridal packages.",
+  "pricing": "Haircuts from ₹300, facials from ₹800, and bridal packages from ₹8,000. Exact pricing depends on the service — happy to share a full list!",
+  "faqs": [
+    { "q": "Do you take walk-ins or do I need an appointment?", "a": "Walk-ins are welcome, but appointments are recommended on weekends as we get busy." },
+    { "q": "Do you have parking?", "a": "Yes, free customer parking is available behind Riverside Plaza." },
+    { "q": "What products do you use?", "a": "We use professional, cruelty-free brands and have ammonia-free colour options." },
+    { "q": "Do you offer home service?", "a": "We offer at-home bridal and party packages within the city for an additional travel charge." }
+  ]
+}

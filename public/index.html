@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WhatsApp Business Bot — Live Simulator</title>
+  <meta name="description" content="A WhatsApp business automation bot: auto-replies, FAQ answering and lead capture. Try it live in the built-in simulator." />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">🤖 <span>WhatsApp Business Bot</span></div>
+    <a class="gh-link" href="https://github.com" target="_blank" rel="noopener">View on GitHub →</a>
+  </header>
+
+  <main>
+    <section class="intro">
+      <h1>Automate WhatsApp: replies, FAQs &amp; lead capture</h1>
+      <p>This bot answers customer questions instantly, handles a guided <strong>lead-capture flow</strong>, and is built for the official <strong>Meta WhatsApp Cloud API</strong>. Try it live below — no setup needed.</p>
+    </section>
+
+    <div class="layout">
+      <!-- Phone simulator -->
+      <div class="phone">
+        <div class="phone-head">
+          <div class="avatar" id="avatar">G</div>
+          <div>
+            <div class="phone-name" id="biz-name">Business</div>
+            <div class="phone-status">online · bot</div>
+          </div>
+          <button class="reset" id="reset" title="Reset conversation">↺</button>
+        </div>
+        <div class="chat" id="chat"></div>
+        <div class="quick" id="quick"></div>
+        <form class="composer" id="composer">
+          <input id="input" type="text" placeholder="Type a message" autocomplete="off" />
+          <button type="submit" aria-label="Send">➤</button>
+        </form>
+      </div>
+
+      <!-- Side panel: captured leads + status -->
+      <aside class="side">
+        <div class="card">
+          <h3>How it works</h3>
+          <ul class="how">
+            <li>🟢 <b>Auto-reply</b> to hours, location, services, pricing</li>
+            <li>❓ <b>FAQ matching</b> for common questions</li>
+            <li>📅 <b>Lead capture</b> — type <code>book</code> to see the flow</li>
+            <li>🧑‍💼 <b>Human handoff</b> — type <code>agent</code></li>
+            <li>✨ Optional <b>AI fallback</b> for free-form questions</li>
+          </ul>
+          <p class="status" id="status"></p>
+        </div>
+        <div class="card">
+          <h3>📥 Captured leads <span id="lead-count" class="pill">0</span></h3>
+          <ul class="leads" id="leads"><li class="muted">No leads yet — try the booking flow.</li></ul>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <footer>Built for the Meta WhatsApp Cloud API · Pure testable engine + built-in simulator · Optional Claude</footer>
+
+  <script src="/app.js"></script>
+</body>
+</html>

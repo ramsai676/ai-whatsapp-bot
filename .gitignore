@@ -1,0 +1,13 @@
+node_modules/
+.env
+.env.local
+*.log
+npm-debug.log*
+.DS_Store
+dist/
+coverage/
+.vscode/
+.idea/
+
+# Runtime-captured leads (don't commit collected personal data)
+data/leads.json
