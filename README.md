@@ -1,6 +1,6 @@
 # 🤖 WhatsApp Business Automation Bot
 
-> Auto-replies, FAQ answering, and a guided **lead-capture flow** for WhatsApp — built for the official **Meta WhatsApp Cloud API**, with a **built-in WhatsApp simulator** so it runs and demos with **zero credentials**.
+> Auto-replies, FAQ answering, and a guided **lead-capture flow** for WhatsApp - built for the official **Meta WhatsApp Cloud API**, with a **built-in WhatsApp simulator** so it runs and demos with **zero credentials**.
 
 A practical automation bot for small businesses: it answers customers instantly, collects qualified leads, hands off to a human on request, and (optionally) uses **Claude** to handle free-form questions.
 
@@ -12,12 +12,12 @@ A practical automation bot for small businesses: it answers customers instantly,
 
 ## ✨ Why this project
 
-This is exactly the WhatsApp automation small businesses pay for — and it's engineered the way a real product would be:
+This is exactly the WhatsApp automation small businesses pay for - and it's engineered the way a real product would be:
 
 - **Provider-ready, not a toy.** Implements the real Meta **Cloud API** webhook contract (verification + inbound parsing + Graph API sending).
 - **Demoable instantly.** A built-in **WhatsApp-style simulator** drives the *same* bot engine in-browser, so reviewers can try it with no Meta account, no phone, no QR code.
-- **Properly architected & tested.** The conversation engine is a **pure, synchronous, side-effect-free function** — 12 unit tests cover intents, the multi-step lead-capture state machine, cancellation, FAQ matching, and webhook parsing.
-- **Optional AI.** Free-form questions the rules don't catch can be answered by Claude, grounded in the business profile — with a graceful default when no key is set.
+- **Properly architected & tested.** The conversation engine is a **pure, synchronous, side-effect-free function** - 12 unit tests cover intents, the multi-step lead-capture state machine, cancellation, FAQ matching, and webhook parsing.
+- **Optional AI.** Free-form questions the rules don't catch can be answered by Claude, grounded in the business profile - with a graceful default when no key is set.
 
 ---
 
@@ -59,7 +59,7 @@ Open the page and chat in the phone simulator. Try:
                      ai.js (Claude, opt.)          leadStore.js → data/leads.json
 ```
 
-The engine never touches the network or disk — transport (`whatsapp.js`), AI (`ai.js`), and persistence (`leadStore.js`) are separate, swappable layers.
+The engine never touches the network or disk - transport (`whatsapp.js`), AI (`ai.js`), and persistence (`leadStore.js`) are separate, swappable layers.
 
 ---
 
@@ -90,13 +90,13 @@ Customise the bot by editing [`data/business.json`](data/business.json) (hours, 
 ## 🧪 Tests
 
 ```bash
-npm test     # 12 unit tests — engine + webhook parsing, no network
+npm test     # 12 unit tests - engine + webhook parsing, no network
 ```
 
 ## ⚖️ Use responsibly
 
-Respect WhatsApp's Business Policy and local consent/anti-spam laws. Only message users who have opted in; captured personal data (`data/leads.json`) is git-ignored by default — handle it per applicable privacy rules.
+Respect WhatsApp's Business Policy and local consent/anti-spam laws. Only message users who have opted in; captured personal data (`data/leads.json`) is git-ignored by default - handle it per applicable privacy rules.
 
 ## 📜 License
 
-MIT — see [LICENSE](LICENSE).
+MIT - see [LICENSE](LICENSE).
