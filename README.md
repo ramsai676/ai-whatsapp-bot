@@ -1,10 +1,18 @@
-# WhatsApp Business Bot
+<!-- header:start -->
+<p align="center">
+  <img src=".github/banner.png" alt="WhatsApp Bot: Meta Cloud API bot: FAQ answers, multi-step lead capture and human handoff, with a simulator." width="100%">
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/-JavaScript-1f2937?style=flat-square&logo=javascript&logoColor=white" alt="JavaScript">
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-3b82f6?style=flat-square" alt="MIT license"></a>
+  <img src="https://img.shields.io/badge/tests-included-22c55e?style=flat-square" alt="Tests included">
+</p>
+
+<!-- header:end -->
 
 A WhatsApp automation bot for small businesses. It auto-replies to common questions, answers from a configurable FAQ, runs a guided lead-capture flow, and hands off to a human on request. It is built for the official Meta WhatsApp Cloud API and ships with a built-in simulator so it can be run and demonstrated without any credentials.
 
-![node](https://img.shields.io/badge/node-%3E%3D18-informational)
-![license](https://img.shields.io/badge/license-MIT-blue)
-![tests](https://img.shields.io/badge/tests-12%20passing-success)
 
 ## Overview
 
